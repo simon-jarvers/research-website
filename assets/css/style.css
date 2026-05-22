@@ -18,7 +18,7 @@
   /* Type */
   --serif:       'Source Serif 4', Georgia, 'Times New Roman', serif;
   --sans:        'DM Sans', system-ui, -apple-system, sans-serif;
-  --col:         800px;
+  --col:         900px;
   --pad:         32px;
 }
 
@@ -81,7 +81,7 @@ nav .nav-name {
 }
 .nav-links a {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-muted);
   transition: color 0.15s;
 }
@@ -115,6 +115,19 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-5.5px) rotat
 /* Research dropdown */
 .nav-dropdown { position: relative; }
 .nav-dropdown-toggle { cursor: pointer; user-select: none; }
+.nav-dropdown-toggle::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
 .nav-dropdown-menu {
   display: none;
   position: absolute;
@@ -149,7 +162,7 @@ section { padding: 72px 0 60px; }
 
 .section-label {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -178,14 +191,14 @@ section { padding: 72px 0 60px; }
      The shelf in the artwork sits ~39% from the top of the PNG. */
   top: 50%;
   transform: translateY(-44%);
-  width: 300px;
+  width: 350px;
   height: auto;
   pointer-events: none;
   user-select: none;
   z-index: 2;
 }
 @media (max-width: 700px) {
-  .section-label--shelf .shelf-plants { width: 150px; }
+  .section-label--shelf .shelf-plants { width: 200px; }
 }
 
 /* ── Hero ──────────────────────────────────────────────────── */
@@ -193,8 +206,8 @@ section { padding: 72px 0 60px; }
 
 .hero-split {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 40px;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
   align-items: start;
   margin-top: 8px;
 }
@@ -205,16 +218,22 @@ section { padding: 72px 0 60px; }
   gap: 18px;
 }
 .hero-photo {
-  width: 160px;
-  height: 160px;
+  width: 280px;
+  height: 280px;
   border-radius: 4px;
   object-fit: cover;
   display: block;
   background: var(--border);
   max-width: 100%;
 }
-.hero-text-col { min-width: 0; }
-.hero-text-col .hero-subhead { margin-bottom: 0; max-width: 100%; }
+.hero-text-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+.hero-text-col .hero-subhead { max-width: 100%; }
+.hero-text-col .hero-cta { margin-top: auto; align-self: flex-start; }
 
 .hero-discipline {
   font-family: var(--sans);
@@ -226,7 +245,7 @@ section { padding: 72px 0 60px; }
 }
 .hero-headline {
   font-family: var(--serif);
-  font-size: 30px;
+  font-size: 36px;
   font-weight: 300;
   line-height: 1.28;
   color: var(--text);
@@ -241,9 +260,9 @@ section { padding: 72px 0 60px; }
 
 .hero-subhead {
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.78;
+  line-height: 1.75;
   color: #3D3D3A;
   margin-bottom: 28px;
   max-width: 580px;
@@ -253,16 +272,15 @@ section { padding: 72px 0 60px; }
 
 .hero-bio {
   font-size: 16px;
-  line-height: 1.78;
+  line-height: 1.75;
   color: #3D3D3A;
   margin-bottom: 32px;
 }
 .hero-cta {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--forest);
   border-bottom: 1px solid var(--forest);
-  padding-bottom: 1px;
   transition: opacity 0.15s;
 }
 .hero-cta:hover { opacity: 0.7; }
@@ -279,7 +297,7 @@ section { padding: 72px 0 60px; }
   background: #FFFFFF;
   border: 0.5px solid var(--border);
   border-radius: 6px;
-  padding: 24px;
+  padding: 24px 24px 12px;
   display: flex;
   flex-direction: column;
   min-height: 168px;
@@ -300,7 +318,7 @@ section { padding: 72px 0 60px; }
 }
 .pillar-title {
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.35;
   color: var(--text);
@@ -309,7 +327,7 @@ section { padding: 72px 0 60px; }
 }
 .pillar-desc {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.55;
   color: var(--text-muted);
   margin-bottom: 18px;
@@ -385,7 +403,7 @@ section { padding: 72px 0 60px; }
 .pub-item { padding: 18px 0; }
 .pub-item + .pub-item { border-top: 0.5px solid var(--border); }
 .pub-title {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.55;
   color: var(--text);
   margin-bottom: 5px;
@@ -397,19 +415,19 @@ section { padding: 72px 0 60px; }
 .pub-title-link:hover { opacity: 0.7; }
 .pub-authors {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-muted);
   margin-bottom: 3px;
 }
 .pub-meta {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-faint);
 }
 .pub-venue { color: var(--forest); }
 .pub-link {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--forest);
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s;
@@ -453,7 +471,7 @@ section { padding: 72px 0 60px; }
 .back-link-wrap { padding: 28px 0 0; }
 .back-link {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--forest);
   transition: opacity 0.15s;
 }
@@ -466,7 +484,7 @@ section { padding: 72px 0 60px; }
 }
 .project-title {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 300;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -474,7 +492,7 @@ section { padding: 72px 0 60px; }
   margin-bottom: 10px;
 }
 .project-desc {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.6;
@@ -482,7 +500,7 @@ section { padding: 72px 0 60px; }
 .project-badge {
   display: inline-block;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -502,7 +520,7 @@ section { padding: 72px 0 60px; }
 .content-section + .content-section { border-top: 0.5px solid var(--border); }
 .content-section h2 {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -510,7 +528,7 @@ section { padding: 72px 0 60px; }
   font-weight: 500;
 }
 .content-section p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.78;
   color: #3D3D3A;
   text-wrap: pretty;
@@ -525,20 +543,20 @@ section { padding: 72px 0 60px; }
   border-radius: 0 4px 4px 0;
 }
 .citation-text {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.65;
   color: var(--text);
   margin-bottom: 10px;
 }
 .citation-meta {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-faint);
 }
 .citation-note {
   margin-top: 14px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-faint);
   font-style: italic;
 }
@@ -600,14 +618,14 @@ section { padding: 72px 0 60px; }
 .affiliation-list { list-style: none; margin-top: 0; }
 .affiliation-item {
   padding: 14px 0;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
   color: #3D3D3A;
 }
 .affiliation-item + .affiliation-item { border-top: 0.5px solid var(--border); }
 .affiliation-role {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-faint);
   margin-top: 2px;
 }
@@ -682,7 +700,7 @@ section { padding: 72px 0 60px; }
   }
   .nav-dropdown-item {
     padding: 8px 0;
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -693,8 +711,8 @@ section { padding: 72px 0 60px; }
     gap: 24px;
   }
   .hero-photo {
-    width: 128px;
-    height: 128px;
+    width: 256px;
+    height: 256px;
   }
 }
 
@@ -715,9 +733,9 @@ section { padding: 72px 0 60px; }
 /* Small phone — keep nav fitting comfortably. */
 @media (max-width: 420px) {
   .nav-inner { height: 48px; padding: 0 16px; }
-  nav .nav-name { font-size: 15px; }
+  nav .nav-name { font-size: 18px; }
   .hero-headline { font-size: 22px; }
-  .content-section p { font-size: 15px; }
+  .content-section p { font-size: 18px; }
   .citation-block { padding: 16px 18px; }
 }
 
