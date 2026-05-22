@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engaged AI Governance — Simon Jarvers</title>
+  <meta name="description" content="Engaged AI Governance: addressing the last-mile challenge in AI compliance through participatory developer workshops. ACM FAccT 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/site.js" defer></script>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="../index.html">Simon Jarvers</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li class="nav-dropdown">
+          <a class="nav-dropdown-toggle active" href="../index.html#research">Research ▾</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="eaig.html">Engaged AI Governance</a>
+            <a class="nav-dropdown-item muted" href="regulatory-intermediaries.html">Regulatory Intermediaries</a>
+            <a class="nav-dropdown-item muted" href="gdd.html">Governance-Driven Development</a>
+            <a class="nav-dropdown-item muted" href="ai-safety.html">AI Safety</a>
+          </div>
+        </li>
+        <li><a href="../index.html#publications">Publications</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="back-link-wrap">
+      <a class="back-link" href="../index.html#research">← Research</a>
+    </div>
+
+    <header class="project-header">
+      <h1 class="project-title">Engaged AI Governance</h1>
+      <p class="project-desc">Addressing the last-mile challenge through internal expert collaboration</p>
+      <span class="project-badge">FAccT 2026</span>
+    </header>
+
+    <div class="content-section">
+      <h2>The Problem</h2>
+      <p>
+        Most AI governance research and policy attention concentrates on the top of the regulatory stack: on legislation, standards bodies, and industry-level frameworks. But governance succeeds or fails at a different level, in the day-to-day decisions of the software developers who build AI systems.
+      </p>
+      <p>
+        The gap between an organisation's formal governance infrastructure — its policies, management systems, compliance documentation — and what actually happens in development teams is what I call the "last-mile" problem of AI governance. Bridging it requires more than good policies. Developers need to understand what regulatory requirements mean for their specific systems, believe those requirements are worth acting on, and have practical means to implement them.
+      </p>
+      <p>
+        Because these teams are rarely accessible to external researchers, this layer of governance is also the least studied.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>The Approach</h2>
+      <p>
+        Engaged AI Governance is an approach to the last-mile problem that draws development teams into active participation, rather than delivering compliance requirements top-down. The central mechanism is a structured collaborative workshop in which developers work directly with expert-mediated regulatory materials to assess current practice, generate implementation strategies, and prioritise effort.
+      </p>
+      <p>
+        The workshop is the central collaborative stage in a legal-text-to-action pipeline: EU AI Act requirements are first extracted and interpreted by an AI governance expert, then translated into a format accessible to developers, surfaced through the collaborative workshop, refined post-hoc with technical and business context, and tracked through to implementation.
+      </p>
+      <p>
+        We conducted the study at Augmented Industries, a Munich-based AI startup developing training solutions for manufacturing. My dual role as AI Governance Specialist and PhD researcher gave me access to all five stages of the translation process, including the expert decisions typically made before and after the developer-facing session. The 90-minute workshop involved eight participants and was co-facilitated by Naira Paola Arnez Jordan (TU Munich Societal Computing), who served as an independent observer to provide a check on researcher bias.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Key Findings</h2>
+      <p>
+        The workshop surfaced three distinct patterns in how developers engage with regulatory requirements, each with direct implications for how AI governance infrastructure should be designed.
+      </p>
+      <p>
+        Where requirements addressed concerns teams already cared about, developers engaged genuinely. Transparency logging requirements, for example, aligned with an existing need for debugging observability: implementing them solved a development problem while satisfying a regulatory obligation. Compliance, in these cases, was not a burden but a framework that named and structured work the team wanted to do anyway.
+      </p>
+      <p>
+        A second group of requirements turned out to already be met. Developers had made design decisions — UX patterns, existing certifications, product philosophy — for reasons entirely unrelated to compliance, but which regulators would recognise as satisfying their obligations. The compliance task here was documentation, not change: recognising that governance was already present without being called that.
+      </p>
+      <p>
+        The third pattern characterised requirements where developers could see no clear link between the obligation and the quality of their system or the experience of their users. These requirements risked becoming purely symbolic. Two dynamics produced this: requirements perceived as serving auditors rather than users, and legal ambiguity that resulted in developers not being able to identify applicable actions even when motivated to do so. Technical documentation still had no official simplified template for SMEs eighteen months after AI Act enactment, leaving teams uncertain whether to invest in a full implementation or wait.
+      </p>
+      <p>
+        A single question emerged organically during the workshop, without facilitator prompting, and proved to organise all three patterns: who benefits from this requirement? Requirements associated with end-user or developer benefit received substantive engagement. Requirements associated with auditor benefit received performative treatment.
+      </p>
+    </div>
+
+    <div class="content-section">
+      <h2>Paper</h2>
+      <div class="citation-block">
+        <p class="citation-text">
+          Simon Jarvers and Orestis Papakyriakopoulos. "Engaged AI Governance: Addressing the Last Mile Challenge Through Internal Expert Collaboration." ACM Conference on Fairness, Accountability, and Transparency (FAccT 2026). Montréal, Canada. June 25–28, 2026.
+        </p>
+        <p class="citation-meta">
+          Accepted ·
+          <a class="pub-link" href="https://arxiv.org/abs/2604.21554" target="_blank" rel="noopener">Preprint on arXiv</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-label">Contact</p>
+          <a class="footer-link" href="mailto:simon.jarvers@tum.de">simon.jarvers@tum.de</a>
+          <a class="footer-link" href="https://www.linkedin.com/in/simon-jarvers/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label">Affiliations</p>
+          <a class="footer-link" href="https://www.gov.sot.tum.de/en/soc/welcome/" target="_blank" rel="noopener">Societal Computing · TU Munich</a>
+          <a class="footer-link" href="https://flow-tool.com/" target="_blank" rel="noopener">Augmented Industries</a>
+        </div>
+      </div>
+      <p class="footer-note">
+        Simon Jarvers · PhD Candidate, Professorship for Societal Computing · Technical University of Munich
+      </p>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">Views expressed here are my own and do not represent those of any affiliated organisation.</p>
+        <p class="footer-legal">© 2026 Simon Jarvers · <a href="../imprint.html">Imprint</a> · <a href="../privacy.html">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
