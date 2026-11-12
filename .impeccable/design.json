@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-12T18:00:00Z",
+  "generatedAt": "2026-11-12T20:00:00Z",
   "title": "Design System: Simon Jarvers",
   "extensions": {
     "colorMeta": {
@@ -8,7 +8,7 @@
         "role": "neutral",
         "displayName": "Drafting Film",
         "canonical": "#f3f5f3",
-        "note": "Net ground: film-base under two SVG grain layers.",
+        "note": "Solid ground on body and sticky header; text on ink; viewer backdrop at 97%.",
         "tonalRamp": [
           "#1e201e",
           "#363936",
@@ -20,26 +20,11 @@
           "#f3f5f3"
         ]
       },
-      "film-base": {
-        "role": "neutral",
-        "displayName": "Film Base",
-        "canonical": "#fcfefc",
-        "tonalRamp": [
-          "#202220",
-          "#393c39",
-          "#575b57",
-          "#7a7f7a",
-          "#a1a6a1",
-          "#c9cec9",
-          "#eaefea",
-          "#fcfefc"
-        ]
-      },
       "film-deep": {
         "role": "neutral",
         "displayName": "Deep Film",
         "canonical": "#e7eae7",
-        "note": "Footer band as seen: film-deep-base under the grain.",
+        "note": "Solid footer band.",
         "tonalRamp": [
           "#1d1f1d",
           "#353835",
@@ -49,38 +34,6 @@
           "#bfc4bf",
           "#dadeda",
           "#e7eae7"
-        ]
-      },
-      "film-deep-base": {
-        "role": "neutral",
-        "displayName": "Deep Film Base",
-        "canonical": "#f0f3f0",
-        "note": "Only under the grain layers, footer band.",
-        "tonalRamp": [
-          "#1f211f",
-          "#383b38",
-          "#565a56",
-          "#787d78",
-          "#9ea39e",
-          "#c6cbc6",
-          "#e2e6e2",
-          "#f0f3f0"
-        ]
-      },
-      "film-strong-base": {
-        "role": "neutral",
-        "displayName": "Strong Film Base",
-        "canonical": "#ffffff",
-        "note": "Only under --paper-strong (hero sheet; header while the hero covers it). Nets to about #f3f5f3 with stronger grain.",
-        "tonalRamp": [
-          "#212121",
-          "#3b3b3b",
-          "#5a5a5a",
-          "#7e7e7e",
-          "#a6a6a6",
-          "#cfcfcf",
-          "#efefef",
-          "#ffffff"
         ]
       },
       "ink": {
@@ -186,10 +139,6 @@
         "purpose": "Hair rule under the sticky header once the sign has docked. A drawn line, not elevation."
       }
     ],
-    "grain": {
-      "value": "var(--paper), #fcfefc | var(--paper), #f0f3f0 | var(--paper-strong), #ffffff",
-      "purpose": "--paper: two SVG fractalNoise layers (240px tile at 7% alpha, baseFrequency .9; 900px tile at 5% alpha, baseFrequency .008 .02), background-attachment fixed: film-base on body and sticky header, film-deep-base on the footer band. --paper-strong: dark speckle (260px, .12), white speckle (260px, .7), neutral turbulence fibres (600px, .04), broad mottle (900px, .03) over film-strong-base, net tone about #f3f5f3; on .hero::before, full-bleed from top -80px, masked linear-gradient(#000 72%, transparent) to fade into the page, and on the header while html.sign-covered:not(.sign-docked)."
-    },
     "motion": [
       {
         "name": "ease-out",
@@ -229,7 +178,7 @@
       {
         "name": "sign-flight",
         "value": "14 panels cut on measured grid lines (XS/YS); each travels 300px of scroll (FLIGHT), cubic ease-out, rotating about its own centre: wobble sin(pi*k) x (-7, 0 or +7 deg by index), the first R of JARVERS (row 1, col 2, zero-based) turns -360deg; lift starts before the panel reaches the header, lead 10px + 7px per column from the right",
-        "purpose": "Sign panels fly from hero to header name slot above the header, no clipping; header transparent at rest, --paper-strong once the hero top reaches it (sign-covered), normal paper plus hair when docked; reduced motion fades the docked sign in over 0.4s."
+        "purpose": "Sign panels fly from hero to header name slot above the header, no clipping; header stays solid film and gains the inset hair line when docked; reduced motion fades the docked sign in over 0.4s."
       }
     ],
     "breakpoints": [
@@ -280,7 +229,11 @@
       "sheetOpener": "8px, width min(100vw, 100% + 2 * clamp(12px, 3vw, 40px)), justify-self center; body overflow-x: clip",
       "abstractMeasure": "38em (deliberate exception to the 34em measure)",
       "partMeta": "grid gap 18px, line-height 1.55; authors one per line (gap 2px)",
-      "heroSheet": ".hero::before full-bleed (left/right calc(50% - 50vw)), top -80px, --paper-strong over #ffffff, mask fade from 72%"
+      "headerStates": "Solid --film always; inset 0 -1px 0 hair once html.sign-docked (index with script), transition box-shadow 0.3s"
+    },
+    "ground": {
+      "value": "var(--film) | var(--film-deep)",
+      "purpose": "Flat solid ground: --film on body and sticky header, --film-deep on the footer band. No noise layers, no fixed attachment, no hero sheet; texture comes only from real crayon crops of the sign."
     }
   },
   "components": [
@@ -304,7 +257,7 @@
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav-link",
-      "description": "Sticky header on grained film; drafting-caps anchor links, underline on hover.",
+      "description": "Sticky header on solid film; drafting-caps anchor links, underline on hover; inset hair line once the sign docks.",
       "html": "<nav class=\"ds-nav\"><span class=\"ds-nav__name\">Simon Jarvers</span><ul><li><a href=\"#\">About</a></li><li><a href=\"#\">Research</a></li><li><a href=\"#\">Contact</a></li></ul></nav>",
       "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; min-height: 80px; padding: 0 24px; background: #f3f5f3; box-shadow: inset 0 -1px 0 rgb(28 29 31 / 0.28); color: #1c1d1f; font: 600 0.8125rem/1 'Archivo Narrow', 'Arial Narrow', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav a { color: inherit; text-decoration: none; text-underline-offset: 0.22em; text-decoration-thickness: 1px; } .ds-nav a:hover { text-decoration: underline; } .ds-nav a:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
     },
@@ -328,8 +281,8 @@
       "name": "Footer Band",
       "kind": "custom",
       "refersTo": "footer-band",
-      "description": "Full-width deep-film band under one 1px ink line; inner grid repeats the sheet columns.",
-      "html": "<footer class=\"ds-foot\"><div class=\"ds-foot__in\"><div class=\"ds-foot__contact\"><h2>Contact</h2></div><div><p>Professorship for <a href=\"#\">Societal Computing</a>, Technical University of Munich</p><p class=\"ds-foot__legal\">© Simon Jarvers · <a href=\"#\">Imprint</a> · <a href=\"#\">Privacy</a></p></div></div></footer>",
+      "description": "Full-width solid deep-film band under one 1px ink line; inner grid repeats the sheet columns.",
+      "html": "<footer class=\"ds-foot\"><div class=\"ds-foot__in\"><div class=\"ds-foot__contact\"><h2>Contact</h2></div><div><p>Professorship for <a href=\"#\">Societal Computing</a>, Technical University of Munich</p><p class=\"ds-foot__legal\">\u00a9 Simon Jarvers \u00b7 <a href=\"#\">Imprint</a> \u00b7 <a href=\"#\">Privacy</a></p></div></div></footer>",
       "css": ".ds-foot { background: #e7eae7; border-top: 1px solid #1c1d1f; color: #4a4d52; font: 400 0.9375rem/1.65 'Hanken Grotesk', system-ui, sans-serif; } .ds-foot__in { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2.4fr); column-gap: clamp(24px,4vw,56px); padding: 48px 24px 40px; } .ds-foot p { margin: 0 0 6px; } .ds-foot__contact { color: #1c1d1f; } .ds-foot h2, .ds-foot__legal { margin: 0; font-family: 'Archivo Narrow', 'Arial Narrow', sans-serif; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; } .ds-foot h2 { font-size: 0.8125rem; } .ds-foot__legal { margin-top: 18px; font-size: 0.75rem; } .ds-foot a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: rgb(28 29 31 / 0.28); } .ds-foot a:hover { text-decoration-color: currentColor; } .ds-foot a:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
     },
     {
@@ -351,9 +304,9 @@
   ],
   "narrative": {
     "northStar": "The Shop Drawing",
-    "overview": "The page is the shop drawing for something being built, reduced to its cut list. Everything is graphite linework on a cool sheet of drafting film; the hand-drawn crayon sign is the only painted plate, and the only colour that leaves it is real crayon cropped from it: a small framed swatch per paper and the sign's own bottom border line opening each sheet, reaching just past the content column, in its own black or refilled with the sign's blue and pink. The system rejects the academic template (serif name, cream ground, bulleted publication list) and the corporate claim-and-proof page.\n\nDensity is calm and two-columned: each section is a sheet, opened by a crayon line, with its label in a narrow left column and its text in a wide right column of reading measure. Papers are listed as parts divided by hairlines, each led by its crayon swatch; an opened part reuses the same two columns, details left and abstract right. There is no grid paper, no dimension lines and no title block; the drawing metaphor lives in the pens, the crayon, and the narrow drafting caps, not in decoration.\n\nMotion is mechanical and quiet: parts slide out of the list, the sign's panels lift off along the drawing's own grid lines and reassemble in the header (one panel, the first R of JARVERS, makes a full counter-clockwise turn on the way), content rises a little as it enters view. Every motion has a reduced-motion and no-script fallback where the content is simply there.",
+    "overview": "The page is the shop drawing for something being built, reduced to its cut list. Everything is graphite linework on a cool, plain sheet of drafting film; the hand-drawn crayon sign is the only painted plate, and the only colour that leaves it is real crayon cropped from it: a small framed swatch per paper and the sign's own bottom border line opening each sheet, reaching just past the content column, in its own black or refilled with the sign's blue and pink. The system rejects the academic template (serif name, cream ground, bulleted publication list) and the corporate claim-and-proof page.\n\nDensity is calm and two-columned: each section is a sheet, opened by a crayon line, with its label in a narrow left column and its text in a wide right column of reading measure. Papers are listed as parts divided by hairlines, each led by its crayon swatch; an opened part reuses the same two columns, details left and abstract right. There is no grid paper, no dimension lines and no title block; the drawing metaphor lives in the pens, the crayon, and the narrow drafting caps, not in decoration.\n\nMotion is mechanical and quiet: parts slide out of the list, the sign's panels lift off along the drawing's own grid lines and reassemble in the header (one panel, the first R of JARVERS, makes a full counter-clockwise turn on the way), content rises a little as it enters view. Every motion has a reduced-motion and no-script fallback where the content is simply there.",
     "keyCharacteristics": [
-      "Cool drafting film with a faint paper grain, heavier under the hero; graphite ink; square corners everywhere.",
+      "Cool drafting film laid flat, with no procedural grain; graphite ink; square corners everywhere.",
       "Two pens (2px ink, 1px ink or hair) plus delicate real crayon lines lifted from the sign, running just past the content column.",
       "Sheets: label left, text right, on one shared two-column grid.",
       "Narrow drafting caps for labels, a plain grotesk for reading.",
@@ -367,8 +320,8 @@
         "section": "colors"
       },
       {
-        "name": "The Grain-Under Rule",
-        "body": "Any surface that must read as paper (body, sticky header, footer band) is a base colour under the two grain layers (`--paper`) with fixed attachment, so every surface shares one continuous sheet. The base is chosen so the net tone reads as the intended film (`film-base` reads as `film`, `film-deep-base` reads as `film-deep`). The one heavier sheet is the hero's: `--paper-strong` (dark speckle at 12%, white speckle at 70%, neutral turbulence fibres at 4%, a broad mottle at 3%) over `film-strong-base`, balanced so its net tone stays about `film`. It lies full-bleed behind the hero from 80px above it and fades out through a mask, so it never ends in an edge; the header borrows it only while the hero is under it.",
+        "name": "The Flat Film Rule",
+        "body": "The ground is solid colour and nothing else: `film` on the body and sticky header, `film-deep` on the footer band. No noise layers, no fixed-attachment backgrounds, no separate hero sheet. The only texture on the page is real crayon from the sign scan (the sign itself, the swatches, the opener lines); the film stays flat so that crayon is the one material with grain. Procedural paper grain was built, could not be seen at reading distance, and was removed to make the page load faster.",
         "section": "colors"
       },
       {
@@ -403,6 +356,7 @@
       "Don't imitate crayon with CSS or SVG; use crops of the real scan.",
       "Don't invent numbering for papers.",
       "Don't add grid paper, dimension lines or a title block; the drawing lives in pens, crayon and lettering.",
+      "Don't add procedural paper grain back (SVG noise, turbulence or speckle layers, fixed-attachment textures, a hero paper sheet); the film is flat and the only texture is real crayon.",
       "Don't caption the personal photos.",
       "Don't set headings or reading text in the narrow caps, or introduce a separate display face."
     ]
