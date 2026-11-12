@@ -1,4 +1,4 @@
-/* Shop drawing, cut-list variant: graphite and crayon on a paper ground; the sign is the only painted plate. */
+/* Shop drawing, cut-list variant: graphite and crayon on plain drafting film; the sign is the only painted plate. */
 
 @font-face { font-family: "Hanken Grotesk"; src: url("../fonts/hanken-grotesk.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "Hanken Grotesk"; src: url("../fonts/hanken-grotesk-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
@@ -6,9 +6,7 @@
 
 :root {
   --film: #f3f5f3;
-  --film-base: #fcfefc; /* sits under the grain so the net ground reads as --film */
-  --film-deep: #e7eae7; /* footer band, as seen */
-  --film-deep-base: #f0f3f0; /* sits under the grain so the band reads as --film-deep */
+  --film-deep: #e7eae7; /* footer band */
   --ink: #1c1d1f;
   --ink-soft: #4a4d52;
   --rule: #1c1d1f;
@@ -25,16 +23,7 @@
   --mark-w: clamp(118px, 12vw, 190px);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --paper:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.008 .02' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .2 0 0 0 0 .18 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 
-  --paper-strong:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .11 0 0 0 0 .1 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23l)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='turbulence' baseFrequency='.02 .045' numOctaves='3' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .22 0 0 0 0 .2 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .015' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .22 0 0 0 0 .2 0 0 0 .03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
-  --film-strong-base: #ffffff;
 
   interpolate-size: allow-keywords;
   color-scheme: light;
@@ -49,8 +38,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 104px; -webkit-text-size-adj
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
-  background: var(--paper), var(--film-base);
-  background-attachment: fixed;
+  background: var(--film);
   color: var(--ink);
   font: 400 1.0625rem/1.65 var(--read);
   font-variant-numeric: tabular-nums;
@@ -80,8 +68,7 @@ a:hover { text-decoration-color: currentColor; }
   position: sticky;
   top: 0;
   z-index: 5;
-  background: var(--paper), var(--film-base);
-  background-attachment: fixed;
+  background: var(--film);
   font-size: 0.8125rem;
   transition: box-shadow 0.3s var(--ease-out);
 }
@@ -103,9 +90,6 @@ a:hover { text-decoration-color: currentColor; }
 .sign-flight .site-nav__mark { display: block; }
 .sign-flight .site-nav__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .sign-docked .site-nav { box-shadow: inset 0 -1px 0 var(--hair); }
-.sign-flight:not(.sign-docked) .site-nav { background: transparent; }
-/* once the hero reaches the header, the header takes the hero's own paper so nothing shows through */
-.sign-flight.sign-covered:not(.sign-docked) .site-nav { background: var(--paper-strong), var(--film-strong-base); background-attachment: fixed; }
 
 /* flying sign panels (index only, added by sign.js) */
 .sign-flight:not(.sign-reduce) .hero__sign img { opacity: 0; }
@@ -114,27 +98,12 @@ a:hover { text-decoration-color: currentColor; }
 
 /* hero: the sign is the plate */
 .hero {
-  position: relative;
-  isolation: isolate;
   width: var(--page);
   margin: 0 auto;
   padding: clamp(32px, 6vh, 80px) 0 clamp(64px, 11vh, 120px);
   display: grid;
   justify-items: center;
   text-align: center;
-}
-/* the hero sits on a heavier sheet of paper that fades into the page */
-.hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -80px;
-  bottom: 0;
-  left: calc(50% - 50vw);
-  right: calc(50% - 50vw);
-  background: var(--paper-strong), var(--film-strong-base);
-  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
-  mask-image: linear-gradient(to bottom, #000 72%, transparent);
 }
 .hero__sign { width: min(720px, 100%); font-size: 1rem; }
 .hero__sign img { width: 100%; }
@@ -302,8 +271,7 @@ a:hover { text-decoration-color: currentColor; }
 
 /* footer: a full-width band in a deeper paper tone, opened by one thin line */
 .site-footer {
-  background: var(--paper), var(--film-deep-base);
-  background-attachment: fixed;
+  background: var(--film-deep);
   border-top: 1px solid var(--rule);
   color: var(--ink-soft);
   font-size: 0.9375rem;
