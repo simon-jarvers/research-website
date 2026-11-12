@@ -4,10 +4,14 @@
   var hero = document.querySelector('.hero__sign img');
   var target = document.querySelector('.site-nav__mark');
   var header = document.querySelector('.site-nav');
-  if (!hero || !target) return;
+  if (!hero || !target || !header) return;
 
-  var COLS = 7, ROWS = 2;
+  // Cut lines measured on the hand-drawn grid of the 2283 x 679 scan, so each panel follows the drawing.
+  var XS = [0, 351, 657, 973, 1290, 1602, 1907, 2283].map(function (v) { return v / 2283; });
+  var YS = [0, 329, 679].map(function (v) { return v / 679; });
+  var COLS = XS.length - 1, ROWS = YS.length - 1;
   var SRC = 'assets/img/sign-1800.webp';
+  var FLIGHT = 300; // scroll distance over which one panel travels
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   var layer = document.createElement('div');
@@ -16,39 +20,43 @@
   var tiles = [];
   for (var r = 0; r < ROWS; r++) {
     for (var c = 0; c < COLS; c++) {
-      var t = document.createElement('span');
-      t.className = 'sign-tile';
-      t.style.backgroundImage = 'url(' + SRC + ')';
-      t.dataset.c = c;
-      t.dataset.r = r;
-      layer.appendChild(t);
-      tiles.push(t);
+      var el = document.createElement('span');
+      el.className = 'sign-tile';
+      el.style.backgroundImage = 'url(' + SRC + ')';
+      layer.appendChild(el);
+      tiles.push({ el: el, c: c, r: r });
     }
   }
   document.body.appendChild(layer);
   document.documentElement.classList.add('sign-flight');
 
-  var heroW, heroH, tileW, tileH, scale, endX, endY, range, startScroll;
+  var heroW, heroH, heroLeft, heroTopDoc, scale, endX, endY, lastStart;
 
   function measure() {
     var hb = hero.getBoundingClientRect();
     var tb = target.getBoundingClientRect();
+    var headerBottom = header.getBoundingClientRect().bottom;
     heroW = hb.width;
     heroH = hb.height;
-    tileW = heroW / COLS;
-    tileH = heroH / ROWS;
+    heroLeft = hb.left;
+    heroTopDoc = hb.top + window.scrollY;
     scale = tb.width / heroW;
     endX = tb.left;
     endY = tb.top + (tb.height - heroH * scale) / 2;
-    var heroTopDoc = hb.top + window.scrollY;
-    startScroll = Math.max(0, heroTopDoc - tb.bottom - 24);
-    range = Math.max(1, heroTopDoc + heroH - startScroll - tb.top);
+    lastStart = 0;
     tiles.forEach(function (t) {
-      var c = +t.dataset.c, r = +t.dataset.r;
-      t.style.width = tileW + 'px';
-      t.style.height = tileH + 'px';
-      t.style.backgroundSize = heroW + 'px ' + heroH + 'px';
-      t.style.backgroundPosition = (-c * tileW) + 'px ' + (-r * tileH) + 'px';
+      t.x = XS[t.c] * heroW;
+      t.y = YS[t.r] * heroH;
+      t.w = (XS[t.c + 1] - XS[t.c]) * heroW;
+      t.h = (YS[t.r + 1] - YS[t.r]) * heroH;
+      t.el.style.width = t.w + 'px';
+      t.el.style.height = t.h + 'px';
+      t.el.style.backgroundSize = heroW + 'px ' + heroH + 'px';
+      t.el.style.backgroundPosition = (-t.x) + 'px ' + (-t.y) + 'px';
+      // each panel lifts off shortly before its top edge would reach the header; left columns go first
+      var lead = 10 + (COLS - 1 - t.c) * 7;
+      t.start = Math.max(0, heroTopDoc + t.y - headerBottom - lead);
+      lastStart = Math.max(lastStart, t.start);
     });
     render();
   }
@@ -58,38 +66,30 @@
 
   function render() {
     ticking = false;
-    var p = clamp((window.scrollY - startScroll) / range);
-    var hb = hero.getBoundingClientRect();
-    var headerBottom = header.getBoundingClientRect().bottom;
-    document.documentElement.classList.toggle('sign-docked', p >= 1);
+    var sy = window.scrollY;
+    var docked = sy >= lastStart + FLIGHT;
+    var root = document.documentElement;
+    root.classList.toggle('sign-docked', docked);
+    root.classList.toggle('sign-reduce', reduce.matches);
 
-    document.documentElement.classList.toggle('sign-reduce', reduce.matches);
     if (reduce.matches) {
-      layer.classList.toggle('is-docked', p >= 1);
-      layer.style.opacity = p >= 1 ? '' : '0';
+      layer.style.opacity = docked ? '' : '0';
       tiles.forEach(function (t) {
-        var c = +t.dataset.c, r = +t.dataset.r;
-        t.style.transform = 'translate(' + (endX + c * tileW * scale) + 'px,' + (endY + r * tileH * scale) + 'px) scale(' + scale + ')';
+        t.el.style.transform = 'translate(' + (endX + t.x * scale) + 'px,' + (endY + t.y * scale) + 'px) scale(' + scale + ')';
       });
       return;
     }
     layer.style.opacity = '';
 
-    var n = tiles.length, stagger = 0.035, span = 1 - stagger * (n - 1);
+    var heroTop = heroTopDoc - sy;
     tiles.forEach(function (t, i) {
-      var c = +t.dataset.c, r = +t.dataset.r;
-      // panels leave column by column, the top row first
-      var order = c * ROWS + r;
-      var k = ease(clamp((p - order * stagger) / span));
-      var sx = hb.left + c * tileW, sy = hb.top + r * tileH;
-      var ex = endX + c * tileW * scale, ey = endY + r * tileH * scale;
-      var x = sx + (ex - sx) * k, y = sy + (ey - sy) * k;
+      var k = ease(clamp((sy - t.start) / FLIGHT));
+      var sx = heroLeft + t.x, sY = heroTop + t.y;
+      var ex = endX + t.x * scale, ey = endY + t.y * scale;
+      var x = sx + (ex - sx) * k, y = sY + (ey - sY) * k;
       var s = 1 + (scale - 1) * k;
-      var tilt = Math.sin(Math.PI * k) * ((order % 3) - 1) * 7;
-      t.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + tilt + 'deg) scale(' + s + ')';
-      // panels still resting in the hero pass under the header, like the static sign
-      var hidden = k === 0 ? Math.max(0, headerBottom - y) : 0;
-      t.style.clipPath = hidden > 0 ? 'inset(' + Math.min(hidden, tileH) + 'px 0 0 0)' : '';
+      var tilt = Math.sin(Math.PI * k) * ((i % 3) - 1) * 7;
+      t.el.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + tilt + 'deg) scale(' + s + ')';
     });
   }
 
