@@ -30,7 +30,7 @@
   document.body.appendChild(layer);
   document.documentElement.classList.add('sign-flight');
 
-  var heroW, heroH, heroLeft, heroTopDoc, scale, endX, endY, lastStart;
+  var heroW, heroH, heroLeft, heroTopDoc, scale, endX, endY, lastStart, coverAt;
 
   function measure() {
     var hb = hero.getBoundingClientRect();
@@ -44,6 +44,7 @@
     endX = tb.left;
     endY = tb.top + (tb.height - heroH * scale) / 2;
     lastStart = 0;
+    coverAt = Math.max(0, heroTopDoc - headerBottom - 8);
     tiles.forEach(function (t) {
       t.x = XS[t.c] * heroW;
       t.y = YS[t.r] * heroH;
@@ -70,6 +71,8 @@
     var docked = sy >= lastStart + FLIGHT;
     var root = document.documentElement;
     root.classList.toggle('sign-docked', docked);
+    // the header turns opaque once the hero's top reaches it, well before the role line could
+    root.classList.toggle('sign-covered', sy > coverAt);
     root.classList.toggle('sign-reduce', reduce.matches);
 
     if (reduce.matches) {
@@ -89,7 +92,7 @@
       var x = sx + (ex - sx) * k, y = sY + (ey - sY) * k;
       var s = 1 + (scale - 1) * k;
       // the first R of JARVERS does a full turn on its way up; the rest wobble a little
-      var tilt = (t.r === 1 && t.c === 2) ? 360 * k : Math.sin(Math.PI * k) * ((i % 3) - 1) * 7;
+      var tilt = (t.r === 1 && t.c === 2) ? -360 * k : Math.sin(Math.PI * k) * ((i % 3) - 1) * 7;
       var cx = t.w * s / 2, cy = t.h * s / 2;
       t.el.style.transform = 'translate(' + (x + cx) + 'px,' + (y + cy) + 'px) rotate(' + tilt + 'deg) translate(' + (-cx) + 'px,' + (-cy) + 'px) scale(' + s + ')';
     });
