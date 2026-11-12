@@ -7,7 +7,8 @@
 :root {
   --film: #f3f5f3;
   --film-base: #fcfefc; /* sits under the grain so the net ground reads as --film */
-  --film-deep: #e7eae7; /* footer band */
+  --film-deep: #e7eae7; /* footer band, as seen */
+  --film-deep-base: #f0f3f0; /* sits under the grain so the band reads as --film-deep */
   --ink: #1c1d1f;
   --ink-soft: #4a4d52;
   --rule: #1c1d1f;
@@ -136,13 +137,10 @@ a:hover { text-decoration-color: currentColor; }
 .sheet::before {
   content: "";
   grid-column: 1 / -1;
-  height: 14px;
+  height: 16px;
   margin-bottom: clamp(28px, 4vw, 44px);
-  background: var(--crayon) 0 50% / 100% 100% no-repeat;
+  background: url("../img/crayon-ink.webp") 0 50% / 100% 100% no-repeat;
 }
-.sheet--ink { --crayon: url("../img/crayon-ink.webp"); }
-.sheet--blue { --crayon: url("../img/crayon-blue.webp"); }
-.sheet--pink { --crayon: url("../img/crayon-pink.webp"); }
 .sheet__label { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.4375rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; text-wrap: balance; }
 
 /* about */
@@ -229,7 +227,7 @@ a:hover { text-decoration-color: currentColor; }
 .part__authors strong { font-weight: 600; }
 .part__note { display: block; font-size: 0.875rem; color: var(--ink-soft); }
 .part__venue-full { color: var(--ink-soft); }
-.part__abstract { max-width: 40em; }
+.part__abstract { max-width: var(--measure); }
 .part__links { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 8px; font-size: 0.8125rem; align-items: baseline; }
 .part__links a { text-decoration-color: currentColor; }
 .part__doi, .part__pending { color: var(--ink-soft); }
@@ -272,7 +270,7 @@ a:hover { text-decoration-color: currentColor; }
 
 /* footer: a full-width band in a deeper paper tone, opened by one thin line */
 .site-footer {
-  background: var(--paper), var(--film-deep);
+  background: var(--paper), var(--film-deep-base);
   background-attachment: fixed;
   border-top: 1px solid var(--rule);
   color: var(--ink-soft);
@@ -294,7 +292,7 @@ a:hover { text-decoration-color: currentColor; }
 
 /* legal and 404 pages */
 .doc { width: var(--page); margin: 0 auto; padding: clamp(48px, 8vw, 88px) 0 clamp(64px, 8vw, 104px); }
-.doc__title { font-size: clamp(2rem, 1.4rem + 2.2vw, 2.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; padding-bottom: 20px; background: url("../img/crayon-ink.webp") 0 100% / 100% 14px no-repeat; }
+.doc__title { font-size: clamp(2rem, 1.4rem + 2.2vw, 2.75rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; padding-bottom: 20px; background: url("../img/crayon-ink.webp") 0 100% / 100% 16px no-repeat; }
 .doc__meta { margin-top: 12px; font-size: 0.75rem; color: var(--ink-soft); }
 .doc section { max-width: var(--measure); margin-top: 40px; }
 .doc h2 { font-size: 1.1875rem; font-weight: 600; margin-bottom: 8px; }
