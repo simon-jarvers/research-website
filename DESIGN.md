@@ -1,9 +1,12 @@
 ---
 name: Simon Jarvers
-description: Shop drawing, cut-list variant. Graphite linework on plain drafting film; the hand-drawn sign is the only painted plate, and real crayon cropped from it is the only other drawn material.
+description: Shop drawing, cut-list variant. Graphite linework on drafting film; the hand-drawn sign is the only painted plate, and real crayon cropped from it is the only other drawn material.
 colors:
   film: "#f3f5f3"
+  film-base: "#fcfefc"
   film-deep: "#e7eae7"
+  film-deep-base: "#f0f3f0"
+  film-strong-base: "#ffffff"
   ink: "#1c1d1f"
   ink-soft: "#4a4d52"
   hair: "rgb(28 29 31 / 0.28)"
@@ -103,14 +106,14 @@ components:
 
 **Creative North Star: "The Shop Drawing"**
 
-The page is the shop drawing for something being built, reduced to its cut list. Everything is graphite linework on a cool, plain sheet of drafting film; the hand-drawn crayon sign is the only painted plate, and the only colour that leaves it is real crayon cropped from it: a small framed swatch per paper and the sign's own bottom border line opening each sheet, reaching just past the content column, in its own black or refilled with the sign's blue and pink. The system rejects the academic template (serif name, cream ground, bulleted publication list) and the corporate claim-and-proof page.
+The page is the shop drawing for something being built, reduced to its cut list. Everything is graphite linework on a cool sheet of drafting film; the hand-drawn crayon sign is the only painted plate, and the only colour that leaves it is real crayon cropped from it: a small framed swatch per paper and the sign's own bottom border line opening each sheet, reaching just past the content column, in its own black or refilled with the sign's blue and pink. The system rejects the academic template (serif name, cream ground, bulleted publication list) and the corporate claim-and-proof page.
 
 Density is calm and two-columned: each section is a sheet, opened by a crayon line, with its label in a narrow left column and its text in a wide right column of reading measure. Papers are listed as parts divided by hairlines, each led by its crayon swatch; an opened part reuses the same two columns, details left and abstract right. There is no grid paper, no dimension lines and no title block; the drawing metaphor lives in the pens, the crayon, and the narrow drafting caps, not in decoration.
 
 Motion is mechanical and quiet: parts slide out of the list, the sign's panels lift off along the drawing's own grid lines and reassemble in the header (one panel, the first R of JARVERS, makes a full counter-clockwise turn on the way), content rises a little as it enters view. Every motion has a reduced-motion and no-script fallback where the content is simply there.
 
 **Key Characteristics:**
-- Cool drafting film laid flat, with no procedural grain; graphite ink; square corners everywhere.
+- Cool drafting film with a faint paper grain, heavier under the hero; graphite ink; square corners everywhere.
 - Two pens (2px ink, 1px ink or hair) plus delicate real crayon lines lifted from the sign, running just past the content column.
 - Sheets: label left, text right, on one shared two-column grid.
 - Narrow drafting caps for labels, a plain grotesk for reading.
@@ -125,8 +128,11 @@ A near-monochrome graphite-on-film palette; colour enters only as raster crayon 
 - **Graphite Ink** (`ink`): all text, every 2px and 1px ink line (icon buttons, toggle bars, focus outlines, photo frames, the footer's top line). Also the fill of a hovered icon button.
 
 ### Neutral
-- **Drafting Film** (`film`): the ground, painted solid on the body and the sticky header. Also the text colour on ink (hover inversion, skip link) and, at 97%, the viewer backdrop.
-- **Deep Film** (`film-deep`): the footer band, solid.
+- **Drafting Film** (`film`): the net ground the eye reads. It is produced, not painted: `film-base` sits under two SVG fractal-noise layers (a fine 240px grain at 7% and a broad 900px mottle at 5%), fixed to the viewport. `film` itself is used flat for text on ink (hover inversion, skip link) and as the 97% viewer backdrop.
+- **Film Base** (`film-base`): the near-white under the grain. Use only together with the grain layers; on its own it is too bright.
+- **Deep Film** (`film-deep`): the footer band as seen. Produced the same way: `film-deep-base` under the same grain layers.
+- **Deep Film Base** (`film-deep-base`): the base under the grain for the footer band only.
+- **Strong Film Base** (`film-strong-base`): pure white under the heavier hero grain (`--paper-strong`), so the hero sheet still nets to about `film` while its grain reads stronger. Use only together with `--paper-strong`.
 - **Soft Graphite** (`ink-soft`): secondary text, meaning venues, counts, full venue lines, notes, footer body, DOI and pending-link text.
 - **Hair** (`hair`): ink at 28%. Row dividers in the parts list, link underlines at rest, the docked header's bottom line.
 
@@ -136,7 +142,7 @@ A near-monochrome graphite-on-film palette; colour enters only as raster crayon 
 ### Named Rules
 **The Only Painted Plate Rule.** The sign is the only painted object. Its colour leaves it only as real crayon taken from the scan: one swatch per paper (blue, pink, teal, ochre, violet, green), framed in pieces of the sign's black border line, and the crayon opener line. The opener is the border line in its own black (About, document titles) or, for the two research groups, the same line's alpha filled with a crop of the sign's real blue (Scalable Governance) or pink (AI in research, mirrored) crayon. Coloured openers mark research groups only, one fill per group, taken from the sign. There are no flat panel-colour tokens; never introduce a colour as a section tint, badge, button fill or decoration. Text selection in ochre is the single flat exception.
 
-**The Flat Film Rule.** The ground is solid colour and nothing else: `film` on the body and sticky header, `film-deep` on the footer band. No noise layers, no fixed-attachment backgrounds, no separate hero sheet. The only texture on the page is real crayon from the sign scan (the sign itself, the swatches, the opener lines); the film stays flat so that crayon is the one material with grain. Procedural paper grain was built, could not be seen at reading distance, and was removed to make the page load faster.
+**The Grain-Under Rule.** Any surface that must read as paper (body, sticky header, footer band) is a base colour under the two grain layers (`--paper`) with fixed attachment, so every surface shares one continuous sheet. The base is chosen so the net tone reads as the intended film (`film-base` reads as `film`, `film-deep-base` reads as `film-deep`). The one heavier sheet is the hero's: `--paper-strong` (dark speckle at 12%, white speckle at 70%, neutral turbulence fibres at 4%, a broad mottle at 3%) over `film-strong-base`, balanced so its net tone stays about `film`. It lies full-bleed behind the hero from 80px above it and fades out through a mask, so it never ends in an edge; the header borrows it only while the hero is under it.
 
 ## Typography
 
@@ -163,17 +169,17 @@ A near-monochrome graphite-on-film palette; colour enters only as raster crayon 
 
 A single centred page `min(1080px, 100% - 2 × gutter)` with a fluid gutter. Inside it, sheets use one shared two-column grid: a narrow label column and a wide text column (`minmax(0, 1fr) minmax(0, 2.4fr)`, gap `col-gap`). Reading blocks cap at the 34em measure in the right column. Each sheet opens with an 8px crayon line that reaches just past the content column (`min(100vw, 100% + 2 × crayon-overhang)`, centred on the sheet by `justify-self: center`; the body clips horizontal overflow so it never scrolls sideways), followed by 28–44px of space. Full-width content inside a sheet (the photo pair, the parts list) spans both columns.
 
-The hero centres the sign at `min(720px, 100%)` with the role line and icon row beneath, directly on the plain film. Sections are separated by generous fluid vertical space (about 32–152px clamps).
+The hero centres the sign at `min(720px, 100%)` with the role line and icon row beneath, on its heavier full-bleed sheet of paper that fades into the page. Sections are separated by generous fluid vertical space (about 32–152px clamps).
 
 Paper rows are a four-column grid: swatch (22px), title (1fr), venue (auto, set right beside the toggle, no wrap), toggle (28px), 20px column gap, 16px vertical padding, top-aligned with small optical offsets so each cell sits on the title's first line (swatch 1px, venue 2px, toggle 5px). An opened part's body repeats the sheet grid: meta (authors one per line, full venue, links; 18px apart, line-height 1.55) in the left column, indented 42px to align with the title, and the abstract in the right column at 38em, a deliberate exception to the 34em measure.
 
 Breakpoints: at 860px and below sheets, opened part bodies and the footer collapse to one column (labels gain 14px beneath; the abstract keeps the 42px indent). At 720px and below the row becomes swatch, title-with-venue-beneath and toggle (22px / 1fr / 20px, 12px gap, top-aligned), the photo pair stacks, opened details indent 34px, and nav gaps tighten to 14px. At 420px and below opened details lose their indent.
 
-The header is sticky with an 80px minimum height, the name slot left and anchor links right; in-page anchors land with 104px scroll padding. The docked mark is `mark` wide. The header is always solid `film`. On the index with script it gains an inset 1px hair line under it once the sign docks (`html.sign-docked`); elsewhere it has no line.
+The header is sticky with an 80px minimum height, the name slot left and anchor links right; in-page anchors land with 104px scroll padding. The docked mark is `mark` wide. On the index with script, the header is clear over the hero at rest, takes the hero's heavier paper once the hero's top reaches it, and returns to the normal grained film with its hair line once the sign docks; elsewhere it is always the normal grained film.
 
 ## Elevation & Depth
 
-Flat. There are no drop shadows; depth is conveyed only by tone (the deeper footer band) and line weight. The one `box-shadow` in the build is an inset 1px hair line under the docked header, which is a drawn rule, not elevation. The photo viewer separates itself by covering the page with near-opaque film (97%) and framing the image in the heavy pen, not by lifting.
+Flat. There are no drop shadows; depth is conveyed only by the paper grain, tone (the deeper footer band), and line weight. The one `box-shadow` in the build is an inset 1px hair line under the docked header, which is a drawn rule, not elevation. The photo viewer separates itself by covering the page with near-opaque film (97%) and framing the image in the heavy pen, not by lifting.
 
 ### Named Rules
 **The Two Pens Rule.** Every drawn line is either the heavy pen (2px ink: icon-button borders, toggle bars, focus outlines, hovered and enlarged photo frames) or the fine pen (1px: photo and footer-band lines in ink; row dividers and underlines in `hair`). The only other line is real crayon: the sign's own bottom border, cropped from the scan, opening each sheet just past the content column at 8px (black, or its alpha refilled with the sign's blue or pink for the two research groups), underlining document titles at 16px, and cut into pieces to frame each swatch inside the swatch image. Swatches carry no CSS border. No third pen weight, no dashed or double lines, no CSS-drawn imitation of crayon.
@@ -202,7 +208,7 @@ The signature component. A sheet whose label column holds the group heading (wit
 - **Below 720px:** the venue drops under the title, left-aligned and wrapping.
 
 ### Navigation
-Sticky header on solid film, links in drafting caps (0.8125rem), no underline at rest, underline on hover. The name slot holds the small sign on scripted pages; without script the text name stands in. It stays solid film throughout the index flight; when the flying sign docks, an inset 1px hair line appears under it (0.3s).
+Sticky header on the grained film, links in drafting caps (0.8125rem), no underline at rest, underline on hover. The name slot holds the small sign on scripted pages; without script the text name stands in. During the index flight it is transparent over the hero, takes the hero's heavier paper once the hero's top reaches it, and when the flying sign docks it returns to the normal film with a hair line under it.
 
 ### Sign Flight (index only)
 As the hero scrolls away, the sign is cut into its 14 panels (7×2) along the drawing's measured grid lines, never an even split. Each panel lifts off shortly before its top edge would reach the header (left columns a little earlier), travels 300px of scroll on a cubic ease-out rotating about its own centre (a wobble of -7°, 0° or +7° that peaks mid-flight and settles back), and reassembles at small size in the header name slot. Easter egg: the first R of JARVERS (row 2, column 3) makes one full counter-clockwise turn (-360°) instead of wobbling. It is a one-off for this sign, not a pattern for other surfaces. Panels fly above the header; nothing is clipped. Reduced motion: the small sign fades in when docked (0.4s). No script: the hero image stays put.
@@ -211,7 +217,7 @@ As the hero scrolls away, the sign is cut into its 14 panels (7×2) along the dr
 Personal photos at 4:3, framed in a 1px ink line. Hover or focus scales the photo to 1.025 and steps the frame to the heavy pen (0.45s), cursor zoom-in. Click opens a native modal dialog: film backdrop at 97%, square close button top right, the image contained and framed in 2px ink, fading in and scaling from 0.96. No captions. Backdrop click and Escape close it; focus returns to the photo. Without script the link opens the full image.
 
 ### Footer Band
-A full-width band in solid deep film, opened by a single 1px ink line. Its inner grid repeats the sheet columns: contact (title in caps, icon buttons, ink) left; affiliation, note and legal line (soft graphite) right.
+A full-width band in deep film under the grain, opened by a single 1px ink line. Its inner grid repeats the sheet columns: contact (title in caps, icon buttons, ink) left; affiliation, note and legal line (soft graphite) right.
 
 ### Scroll Emergence
 Headings, intros, closed part rows and photos rise 28px and unblur from 3px as they enter view, scroll-driven over the first 96px of entry (`animation-timeline: view()`). Never applied to the first viewport or to opened content. Unsupported browsers and reduced motion show content at rest.
@@ -234,6 +240,5 @@ Headings, intros, closed part rows and photos rise 28px and unblur from 3px as t
 - **Don't** imitate crayon with CSS or SVG; use crops of the real scan.
 - **Don't** invent numbering for papers.
 - **Don't** add grid paper, dimension lines or a title block; the drawing lives in pens, crayon and lettering.
-- **Don't** add procedural paper grain back (SVG noise, turbulence or speckle layers, fixed-attachment textures, a hero paper sheet); the film is flat and the only texture is real crayon.
 - **Don't** caption the personal photos.
 - **Don't** set headings or reading text in the narrow caps, or introduce a separate display face.
