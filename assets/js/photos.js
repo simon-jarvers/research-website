@@ -2,7 +2,9 @@
 (function () {
   var dialog = document.querySelector('.viewer');
   if (!dialog || typeof dialog.showModal !== 'function') return;
-  var img = dialog.querySelector('.viewer__img');
+  var img = document.createElement('img');
+  img.className = 'viewer__img';
+  dialog.appendChild(img);
   var opener = null;
 
   document.querySelectorAll('.photo').forEach(function (link) {
