@@ -269,7 +269,7 @@ a:hover { text-decoration-color: currentColor; }
 .viewer__img { max-width: 100%; max-height: 100%; min-height: 0; object-fit: contain; border: 2px solid var(--rule); transform: scale(1); transition: transform 0.45s var(--ease-out); }
 @starting-style { .viewer[open] .viewer__img { transform: scale(0.96); } }
 
-/* footer: a full-width band in a deeper paper tone, opened by one thin line */
+/* footer: a full-width band in a deeper film tone, opened by one thin line */
 .site-footer {
   background: var(--film-deep);
   border-top: 1px solid var(--rule);
