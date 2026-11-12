@@ -6,7 +6,7 @@
 
 :root {
   --film: #f3f5f3;
-  --film-raised: #fafbfa;
+  --film-base: #fcfefc; /* sits under the grain so the net ground reads as --film */
   --ink: #1c1d1f;
   --ink-soft: #4a4d52;
   --rule: #1c1d1f;
@@ -42,11 +42,11 @@ body, h1, h2, h3, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 img { display: block; max-width: 100%; height: auto; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 24px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
-  background: var(--paper), var(--film);
+  background: var(--paper), var(--film-base);
   background-attachment: fixed;
   color: var(--ink);
   font: 400 1.0625rem/1.65 var(--read);
@@ -76,7 +76,7 @@ a:hover { text-decoration-color: currentColor; }
   position: sticky;
   top: 0;
   z-index: 5;
-  background: var(--paper), var(--film);
+  background: var(--paper), var(--film-base);
   background-attachment: fixed;
   font-size: 0.8125rem;
   transition: box-shadow 0.3s var(--ease-out);
@@ -147,7 +147,7 @@ a:hover { text-decoration-color: currentColor; }
   gap: clamp(12px, 2vw, 24px);
   margin-top: clamp(40px, 6vw, 64px);
 }
-.about__photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--rule); }
+.about__photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 
 /* research */
 .research {
@@ -268,4 +268,56 @@ a:hover { text-decoration-color: currentColor; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after, .part::details-content { transition-duration: 0.01ms !important; }
+}
+
+/* photos: lift on hover, inspect on click */
+.photo { display: block; cursor: zoom-in; }
+.photo img { border: 1px solid var(--rule); transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out); }
+.photo:hover img, .photo:focus-visible img { transform: scale(1.025); box-shadow: 0 14px 28px -12px rgb(28 29 31 / 0.35); }
+.photo:focus-visible { outline: none; }
+.photo:focus-visible img { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.viewer {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: clamp(16px, 4vw, 48px);
+  border: 0;
+  background: transparent;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out), display 0.35s allow-discrete, overlay 0.35s allow-discrete;
+}
+.viewer:not([open]) { display: none; }
+.viewer[open] { opacity: 1; }
+@starting-style { .viewer[open] { opacity: 0; } }
+.viewer::backdrop { background: rgb(28 29 31 / 0.82); transition: background-color 0.35s var(--ease-out), display 0.35s allow-discrete, overlay 0.35s allow-discrete; }
+@starting-style { .viewer[open]::backdrop { background: rgb(28 29 31 / 0); } }
+.viewer__bar { justify-self: end; }
+.viewer__close { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid var(--film); background: transparent; color: var(--film); cursor: pointer; }
+.viewer__close:hover { background: var(--film); color: var(--ink); }
+.viewer__close:focus-visible { outline-color: var(--film); }
+.viewer__close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.viewer__img { max-width: 100%; max-height: 100%; min-height: 0; object-fit: contain; border: 2px solid var(--film); transform: scale(1); transition: transform 0.45s var(--ease-out); }
+@starting-style { .viewer[open] .viewer__img { transform: scale(0.96); } }
+
+/* emerging on scroll: scroll-driven, content stays visible where unsupported */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: emerge linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    @keyframes emerge {
+      from { opacity: 0; transform: translateY(28px); filter: blur(3px); }
+      to { opacity: 1; transform: none; filter: none; }
+    }
+  }
 }

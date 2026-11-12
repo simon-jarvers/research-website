@@ -37,6 +37,7 @@
   <link rel="preload" href="assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/sign.js" defer></script>
+  <script src="assets/js/photos.js" defer></script>
 </head>
 <body>
 
@@ -80,30 +81,34 @@
         <p>Outside of research, I love spending time in nature, building my own furniture, and trying to beat my personal records as a hobby powerlifter.</p>
       </div>
       <div class="about__photos">
-        <img src="assets/img/about-mountains-700.webp"
-             srcset="assets/img/about-mountains-700.webp 700w, assets/img/about-mountains-1400.webp 1128w"
-             sizes="(min-width: 960px) 460px, 92vw"
-             width="700" height="525" loading="lazy" decoding="async"
-             alt="Simon smiling on a wooden terrace above a green alpine valley">
-        <img src="assets/img/about-berlin-700.webp"
-             srcset="assets/img/about-berlin-700.webp 700w, assets/img/about-berlin-1400.webp 1400w"
-             sizes="(min-width: 960px) 460px, 92vw"
-             width="700" height="525" loading="lazy" decoding="async"
-             alt="Simon in a cap, orange sunglasses and a pleated skirt, smiling on a cobbled Berlin street">
+        <a class="photo reveal" href="assets/img/about-mountains-1400.webp" data-full="assets/img/about-mountains-1400.webp">
+          <img src="assets/img/about-mountains-700.webp"
+               srcset="assets/img/about-mountains-700.webp 700w, assets/img/about-mountains-1400.webp 1128w"
+               sizes="(min-width: 960px) 460px, 92vw"
+               width="700" height="525" loading="lazy" decoding="async"
+               alt="Simon on a terrace in the Alps">
+        </a>
+        <a class="photo reveal" href="assets/img/about-berlin-1400.webp" data-full="assets/img/about-berlin-1400.webp">
+          <img src="assets/img/about-berlin-700.webp"
+               srcset="assets/img/about-berlin-700.webp 700w, assets/img/about-berlin-1400.webp 1400w"
+               sizes="(min-width: 960px) 460px, 92vw"
+               width="700" height="525" loading="lazy" decoding="async"
+               alt="Simon on a street in Berlin">
+        </a>
       </div>
     </section>
 
     <section class="research" id="research" aria-labelledby="research-title">
-      <h2 class="research__title" id="research-title">Research</h2>
+      <h2 class="research__title reveal" id="research-title">Research</h2>
 
       <div class="cutlist">
-        <div class="cutlist__head">
+        <div class="cutlist__head reveal">
           <h3>Scalable Governance</h3>
         </div>
-        <p class="cutlist__intro">I am building Scalable Governance, a research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems. My research so far studies this at the level of the organisations that build AI: how teams turn regulation into practice, who shapes what compliance means, and how AI agents can do governance work under human oversight. More information will follow once the initiative is founded and public.</p>
+        <p class="cutlist__intro reveal">I am building Scalable Governance, a research initiative with the goal of scaling AI governance to the pace of rapidly increasing capability and volume of AI systems. My research so far studies this at the level of the organisations that build AI: how teams turn regulation into practice, who shapes what compliance means, and how AI agents can do governance work under human oversight. More information will follow once the initiative is founded and public.</p>
 
         <ol class="parts" reversed>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-blue)">
               <summary>
                 <span class="part__no">P-06</span>
@@ -120,7 +125,7 @@
               </div>
             </details>
           </li>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-pink)">
               <summary>
                 <span class="part__no">P-05</span>
@@ -137,7 +142,7 @@
               </div>
             </details>
           </li>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-teal)">
               <summary>
                 <span class="part__no">P-04</span>
@@ -154,7 +159,7 @@
               </div>
             </details>
           </li>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-ochre)">
               <summary>
                 <span class="part__no">P-03</span>
@@ -171,7 +176,7 @@
               </div>
             </details>
           </li>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-violet); --panel-ink: #fff">
               <summary>
                 <span class="part__no">P-02</span>
@@ -187,7 +192,7 @@
               </div>
             </details>
           </li>
-          <li>
+          <li class="reveal">
             <details class="part" style="--panel: var(--panel-green)">
               <summary>
                 <span class="part__no">P-01</span>
@@ -208,11 +213,11 @@
       </div>
 
       <div class="cutlist cutlist--open">
-        <div class="cutlist__head">
+        <div class="cutlist__head reveal">
           <h3>AI in research</h3>
           <p class="cutlist__count">Exploratory</p>
         </div>
-        <p class="cutlist__intro">How AI changes knowledge work and its impact on epistemology in academia. A first study, on how researchers disclose their use of generative AI in published papers, is currently under review.</p>
+        <p class="cutlist__intro reveal">How AI changes knowledge work and its impact on epistemology in academia. A first study, on how researchers disclose their use of generative AI in published papers, is currently under review.</p>
       </div>
     </section>
 
@@ -231,6 +236,13 @@
     <p class="site-footer__note">Views expressed here are my own and do not represent those of any affiliated organisation.</p>
     <p class="site-footer__legal">© Simon Jarvers · <a href="imprint.html">Imprint</a> · <a href="privacy.html">Privacy</a></p>
   </footer>
+
+  <dialog class="viewer" aria-label="Photo">
+    <form method="dialog" class="viewer__bar">
+      <button class="viewer__close" aria-label="Close photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </form>
+    <img class="viewer__img" alt="">
+  </dialog>
 
 </body>
 </html>

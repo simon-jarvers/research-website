@@ -3,6 +3,7 @@
 (function () {
   var hero = document.querySelector('.hero__sign img');
   var target = document.querySelector('.site-nav__mark');
+  var header = document.querySelector('.site-nav');
   if (!hero || !target) return;
 
   var COLS = 7, ROWS = 2;
@@ -59,6 +60,7 @@
     ticking = false;
     var p = clamp((window.scrollY - startScroll) / range);
     var hb = hero.getBoundingClientRect();
+    var headerBottom = header.getBoundingClientRect().bottom;
     document.documentElement.classList.toggle('sign-docked', p >= 1);
 
     document.documentElement.classList.toggle('sign-reduce', reduce.matches);
@@ -85,6 +87,9 @@
       var s = 1 + (scale - 1) * k;
       var tilt = Math.sin(Math.PI * k) * ((order % 3) - 1) * 7;
       t.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + tilt + 'deg) scale(' + s + ')';
+      // panels still resting in the hero pass under the header, like the static sign
+      var hidden = k === 0 ? Math.max(0, headerBottom - y) : 0;
+      t.style.clipPath = hidden > 0 ? 'inset(' + Math.min(hidden, tileH) + 'px 0 0 0)' : '';
     });
   }
 
