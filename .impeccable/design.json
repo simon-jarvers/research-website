@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T00:00:00Z",
+  "title": "Design System: Simon Jarvers",
+  "extensions": {
+    "colorMeta": {
+      "film": {
+        "role": "neutral",
+        "displayName": "Drafting Film",
+        "canonical": "#f3f5f3",
+        "note": "Net ground: film-base under two SVG grain layers.",
+        "tonalRamp": [
+          "#1e201e",
+          "#363936",
+          "#545854",
+          "#757a75",
+          "#9ba09b",
+          "#c3c8c3",
+          "#e3e7e3",
+          "#f3f5f3"
+        ]
+      },
+      "film-base": {
+        "role": "neutral",
+        "displayName": "Film Base",
+        "canonical": "#fcfefc",
+        "tonalRamp": [
+          "#202220",
+          "#393c39",
+          "#575b57",
+          "#7a7f7a",
+          "#a1a6a1",
+          "#c9cec9",
+          "#eaefea",
+          "#fcfefc"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Graphite Ink",
+        "canonical": "#1c1d1f",
+        "tonalRamp": [
+          "#1c1d1f",
+          "#2f3134",
+          "#4a4d52",
+          "#6a6d72",
+          "#8e9196",
+          "#b4b6ba",
+          "#d8d9dc",
+          "#eff0f1"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "#4a4d52",
+        "tonalRamp": [
+          "#1c1d1f",
+          "#2f3134",
+          "#4a4d52",
+          "#6a6d72",
+          "#8e9196",
+          "#b4b6ba",
+          "#d8d9dc",
+          "#eff0f1"
+        ]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hair",
+        "canonical": "rgb(28 29 31 / 0.28)",
+        "tonalRamp": [
+          "rgb(28 29 31 / 1)",
+          "rgb(28 29 31 / 0.8)",
+          "rgb(28 29 31 / 0.6)",
+          "rgb(28 29 31 / 0.45)",
+          "rgb(28 29 31 / 0.28)",
+          "rgb(28 29 31 / 0.18)",
+          "rgb(28 29 31 / 0.1)",
+          "rgb(28 29 31 / 0.05)"
+        ]
+      },
+      "panel-blue": {
+        "role": "secondary",
+        "displayName": "Sign Blue",
+        "canonical": "#2e8fd6",
+        "tonalRamp": [
+          "#0b2a42",
+          "#134468",
+          "#1c6197",
+          "#2e8fd6",
+          "#5aa9e2",
+          "#8cc3ea",
+          "#bddcf3",
+          "#e4f0fa"
+        ]
+      },
+      "panel-pink": {
+        "role": "secondary",
+        "displayName": "Sign Pink",
+        "canonical": "#e2569a",
+        "tonalRamp": [
+          "#3f0f27",
+          "#661a40",
+          "#9a2a61",
+          "#e2569a",
+          "#ea7eb2",
+          "#f1a7ca",
+          "#f7cfe2",
+          "#fcebf3"
+        ]
+      },
+      "panel-teal": {
+        "role": "secondary",
+        "displayName": "Sign Teal",
+        "canonical": "#1f9e8f",
+        "tonalRamp": [
+          "#082d29",
+          "#0f4a43",
+          "#16705f",
+          "#1f9e8f",
+          "#4cb8ab",
+          "#82cfc5",
+          "#b9e5df",
+          "#e3f5f2"
+        ]
+      },
+      "panel-ochre": {
+        "role": "secondary",
+        "displayName": "Sign Ochre",
+        "canonical": "#f2b220",
+        "tonalRamp": [
+          "#3d2c05",
+          "#634808",
+          "#94690c",
+          "#c98e12",
+          "#f2b220",
+          "#f6c95e",
+          "#f9de9c",
+          "#fdf1d6"
+        ]
+      },
+      "panel-violet": {
+        "role": "secondary",
+        "displayName": "Sign Violet",
+        "canonical": "#8a4fa0",
+        "tonalRamp": [
+          "#26142d",
+          "#3f2249",
+          "#5f3370",
+          "#8a4fa0",
+          "#a676b8",
+          "#c29fcf",
+          "#dcc7e4",
+          "#f2e9f5"
+        ]
+      },
+      "panel-green": {
+        "role": "secondary",
+        "displayName": "Sign Green",
+        "canonical": "#2fa84a",
+        "tonalRamp": [
+          "#0c2e13",
+          "#144b20",
+          "#1f7232",
+          "#2fa84a",
+          "#5bbe6f",
+          "#8dd29a",
+          "#bfe5c6",
+          "#e6f5e9"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "note": "Only as text on the violet part cell.",
+        "tonalRamp": [
+          "#1c1d1f",
+          "#3a3b3d",
+          "#5c5d60",
+          "#808184",
+          "#a6a7a9",
+          "#cbcccd",
+          "#ebebec",
+          "#ffffff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Research section title; legal and 404 page titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The single role line under the sign."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Cut-list group headings on a heavy rule."
+      },
+      "part-title": {
+        "displayName": "Part Title",
+        "purpose": "Paper titles in list rows."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text, 34em measure, tabular numerals."
+      },
+      "label": {
+        "displayName": "Drafting Caps",
+        "purpose": "Nav, part numbers, venues, counts, paper links, footer title. Uppercase."
+      },
+      "label-small": {
+        "displayName": "Drafting Caps Small",
+        "purpose": "Legal line and page meta. Uppercase."
+      }
+    },
+    "shadows": [
+      {
+        "name": "docked-header-hair",
+        "value": "inset 0 -1px 0 rgb(28 29 31 / 0.28)",
+        "purpose": "Hair rule under the sticky header once the sign has docked. A drawn line, not elevation."
+      }
+    ],
+    "grain": {
+      "value": "var(--paper), #fcfefc",
+      "purpose": "Two SVG fractalNoise layers (240px tile at 7% alpha, baseFrequency .9; 900px tile at 5% alpha, baseFrequency .008 .02) over film-base, background-attachment fixed, on body and sticky header."
+    },
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every transition in the system."
+      },
+      {
+        "name": "icon-invert",
+        "value": "0.2s",
+        "purpose": "Icon-button hover inversion."
+      },
+      {
+        "name": "part-cell",
+        "value": "0.35s",
+        "purpose": "Part cell fill and toggle rotation on open."
+      },
+      {
+        "name": "part-open",
+        "value": "block-size 0.5s",
+        "purpose": "Details slide open via ::details-content."
+      },
+      {
+        "name": "photo-lift",
+        "value": "transform 0.45s, scale 1.025",
+        "purpose": "Photo hover/focus growth; frame steps to the heavy pen."
+      },
+      {
+        "name": "viewer",
+        "value": "opacity 0.35s; image scale 0.96 to 1 over 0.45s",
+        "purpose": "Photo dialog entry and exit."
+      },
+      {
+        "name": "emerge",
+        "value": "translateY 28px + blur 3px to rest, animation-range entry 0% to entry 96px",
+        "purpose": "Scroll-driven emergence of headings, intros, closed rows, photos."
+      },
+      {
+        "name": "sign-flight",
+        "value": "14 tiles, stagger 0.035, cubic ease-out, tilt up to 7deg",
+        "purpose": "Sign panels fly from hero to header name slot; reduced motion fades the docked sign in over 0.4s."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "720px"
+      },
+      {
+        "name": "narrow",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Outlined square contact link or close button; inverts to ink on hover.",
+      "html": "<a class=\"ds-icon-btn\" href=\"#\" aria-label=\"Email\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"3.5\" y=\"5.5\" width=\"17\" height=\"13\"/><path d=\"m4 6.5 8 6.2 8-6.2\"/></svg></a>",
+      "css": ".ds-icon-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #1c1d1f; background: transparent; color: #1c1d1f; transition: background-color 0.2s cubic-bezier(0.16,1,0.3,1), color 0.2s cubic-bezier(0.16,1,0.3,1); } .ds-icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; } .ds-icon-btn:hover { background: #1c1d1f; color: #f3f5f3; } .ds-icon-btn:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Contact Row",
+      "kind": "custom",
+      "refersTo": "icon-button",
+      "description": "Three icon buttons, 10px apart: email, LinkedIn, Google Scholar.",
+      "html": "<div class=\"ds-icons\"><a class=\"ds-icon-btn\" href=\"#\" aria-label=\"Email\"><svg viewBox=\"0 0 24 24\"><rect x=\"3.5\" y=\"5.5\" width=\"17\" height=\"13\"/><path d=\"m4 6.5 8 6.2 8-6.2\"/></svg></a><a class=\"ds-icon-btn\" href=\"#\" aria-label=\"LinkedIn\"><svg viewBox=\"0 0 24 24\"><path d=\"M7 10v7.5M7 6.6v.2M11 17.5V10m0 3.6c0-2.2 1.3-3.8 3.1-3.8 1.7 0 2.9 1.2 2.9 3.4v4.3\"/></svg></a><a class=\"ds-icon-btn\" href=\"#\" aria-label=\"Google Scholar\"><svg viewBox=\"0 0 24 24\"><path d=\"M2.5 9.5 12 4.5l9.5 5-9.5 5z\"/><path d=\"M6.5 11.6v4.1c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.1M21.5 9.5v5\"/></svg></a></div>",
+      "css": ".ds-icons { display: flex; gap: 10px; } .ds-icon-btn { display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #1c1d1f; color: #1c1d1f; transition: background-color 0.2s, color 0.2s; } .ds-icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; } .ds-icon-btn:hover { background: #1c1d1f; color: #f3f5f3; } .ds-icon-btn:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky header on grained film; drafting-caps anchor links, underline on hover.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav__name\">Simon Jarvers</span><ul><li><a href=\"#\">About</a></li><li><a href=\"#\">Research</a></li><li><a href=\"#\">Contact</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; min-height: 72px; padding: 0 24px; background: #f3f5f3; box-shadow: inset 0 -1px 0 rgb(28 29 31 / 0.28); color: #1c1d1f; font: 600 0.8125rem/1 'Archivo Narrow', 'Arial Narrow', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav a { color: inherit; text-decoration: none; text-underline-offset: 0.22em; text-decoration-thickness: 1px; } .ds-nav a:hover { text-decoration: underline; } .ds-nav a:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Cut List Row",
+      "kind": "custom",
+      "refersTo": "part-row",
+      "description": "A paper as a numbered part between hairlines; opening fills the part cell with its panel colour.",
+      "html": "<ol class=\"ds-parts\"><li><details class=\"ds-part\" style=\"--panel:#e2569a\" open><summary><span class=\"ds-part__no\">P-05</span><span class=\"ds-part__title\">Governing by Proxy</span><span class=\"ds-part__venue\">AIES 2026</span><span class=\"ds-part__toggle\"></span></summary><p class=\"ds-part__body\">Abstract text, capped at the reading measure.</p></details></li><li><details class=\"ds-part\" style=\"--panel:#2e8fd6\"><summary><span class=\"ds-part__no\">P-06</span><span class=\"ds-part__title\">Human-AI Collaboration in Compliance Automation</span><span class=\"ds-part__venue\">HICSS 2027 <span class=\"ds-rev\"><svg viewBox=\"0 0 16 16\"><path d=\"M8 2.5 14 13.5H2z\"/></svg>Forthcoming</span></span><span class=\"ds-part__toggle\"></span></summary><p class=\"ds-part__body\">Link follows on publication.</p></details></li></ol>",
+      "css": ".ds-parts { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgb(28 29 31 / 0.28); color: #1c1d1f; font: 400 1.0625rem/1.65 'Hanken Grotesk', system-ui, sans-serif; } .ds-parts > li { border-bottom: 1px solid rgb(28 29 31 / 0.28); } .ds-part summary { list-style: none; display: grid; grid-template-columns: 4.5rem 1fr 12rem 28px; align-items: baseline; column-gap: 20px; padding: 16px 0; cursor: pointer; } .ds-part summary::-webkit-details-marker { display: none; } .ds-part summary:focus-visible { outline: 2px solid #1c1d1f; } .ds-part__no, .ds-part__venue { font: 600 0.8125rem/1.4 'Archivo Narrow', 'Arial Narrow', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; } .ds-part__no { justify-self: start; padding: 3px 7px; margin-left: -7px; transition: background-color 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-part__venue { color: #4a4d52; display: inline-flex; gap: 10px; flex-wrap: wrap; } .ds-rev { display: inline-flex; align-items: center; gap: 4px; } .ds-rev svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; } .ds-part__title { font-weight: 500; line-height: 1.4; } .ds-part summary:hover .ds-part__title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; } .ds-part__toggle { position: relative; width: 14px; height: 14px; align-self: center; justify-self: end; } .ds-part__toggle::before, .ds-part__toggle::after { content: ''; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; background: #1c1d1f; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-part__toggle::after { transform: rotate(90deg); } .ds-part[open] .ds-part__no { background: var(--panel); } .ds-part[open] .ds-part__toggle::after { transform: rotate(0deg); } .ds-part__body { margin: 0; padding: 0 0 28px calc(4.5rem + 20px); max-width: 34em; }"
+    },
+    {
+      "name": "Cut List Head",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Group heading on the heavy pen, optional status label opposite.",
+      "html": "<div class=\"ds-cut-head\"><h3>AI in research</h3><p>Exploratory</p></div>",
+      "css": ".ds-cut-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 10px; border-bottom: 2px solid #1c1d1f; color: #1c1d1f; } .ds-cut-head h3 { margin: 0; font: 600 1.4375rem/1.2 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: -0.01em; } .ds-cut-head p { margin: 0; color: #4a4d52; font: 600 0.8125rem/1 'Archivo Narrow', 'Arial Narrow', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Photo Frame",
+      "kind": "card",
+      "refersTo": "rounded.none",
+      "description": "Personal photo in a 1px ink frame; hover grows it and steps the frame to the heavy pen.",
+      "html": "<a class=\"ds-photo\" href=\"#\"><span class=\"ds-photo__img\"></span></a>",
+      "css": ".ds-photo { display: block; width: 240px; cursor: zoom-in; } .ds-photo__img { display: block; aspect-ratio: 4 / 3; background: linear-gradient(135deg, #9ba09b, #c3c8c3); border: 1px solid #1c1d1f; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); } .ds-photo:hover .ds-photo__img, .ds-photo:focus-visible .ds-photo__img { transform: scale(1.025); outline: 2px solid #1c1d1f; outline-offset: -1px; } .ds-photo:focus-visible { outline: none; } .ds-photo:focus-visible .ds-photo__img { outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "body",
+      "description": "Inline link: hair underline at rest, ink underline on hover.",
+      "html": "<p class=\"ds-p\">Professorship for <a href=\"#\">Societal Computing</a>, TU Munich.</p>",
+      "css": ".ds-p { color: #1c1d1f; font: 400 1.0625rem/1.65 'Hanken Grotesk', system-ui, sans-serif; } .ds-p a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; text-decoration-color: rgb(28 29 31 / 0.28); } .ds-p a:hover { text-decoration-color: currentColor; } .ds-p a:focus-visible { outline: 2px solid #1c1d1f; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shop Drawing",
+    "overview": "The page is the shop drawing for something being built, reduced to its cut list. Everything is graphite linework on a cool sheet of drafting film; the hand-drawn crayon sign is the only painted plate, and its colours leave it only to mark state. The system rejects the academic template (serif name, cream ground, bulleted publication list) and the corporate claim-and-proof page.\n\nDensity is calm and linear: one centred column of reading measure, sections separated by heavy ruled lines, papers listed as numbered parts divided by hairlines. There is no grid paper, no dimension lines and no title block; the drawing metaphor lives in the pens, the narrow drafting caps and the part numbers, not in decoration.\n\nMotion is mechanical and quiet: parts slide out of the list, the sign's panels lift off and reassemble in the header, content rises a little as it enters view. Every motion has a reduced-motion and no-script fallback where the content is simply there.",
+    "keyCharacteristics": [
+      "Cool drafting film with a faint paper grain; graphite ink; square corners everywhere.",
+      "Two pens only: heavy 2px and 1px hair.",
+      "Narrow drafting caps for labels, a plain grotesk for reading.",
+      "Sign colours appear only as state, one panel colour per opened part.",
+      "The sign is used as drawn, never redrawn or recoloured."
+    ],
+    "rules": [
+      {
+        "name": "The Only Painted Plate Rule",
+        "body": "The sign is the only coloured object at rest. A panel colour appears only when something is opened (a part cell) or selected (text selection uses ochre); never as a section tint, badge, button fill or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Grain-Under Rule",
+        "body": "Any surface that must read as the page ground (body, sticky header) is `film-base` under the two grain layers with fixed attachment, so the header and page share one continuous sheet.",
+        "section": "colors"
+      },
+      {
+        "name": "The Drafting Caps Rule",
+        "body": "Archivo Narrow is always 600, uppercase and tracked 0.1em; it never sets a heading or a sentence of reading text.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Reading Face Rule",
+        "body": "Every heading and paragraph is Hanken Grotesk; hierarchy comes from size and weight (400/500/600), not from a second display face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Pens Rule",
+        "body": "Every line is either the heavy pen (2px ink: section rules, cut-list openers, icon-button borders, toggle bars, focus outlines, hovered and enlarged photo frames) or the hair pen (1px: row dividers and underlines in `hair`, photo frames at rest in ink). No third weight, no dashed or double lines.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do draw every line with one of the two pens: 2px ink or 1px hair.",
+      "Do keep the panel colours for state: one colour per paper, shown only in its opened part cell, with ink text (white on violet).",
+      "Do mark forthcoming work with the outlined revision triangle and the word, inside the venue label.",
+      "Do use outlined 44px square icon buttons that invert to ink on hover.",
+      "Do set labels in Archivo Narrow 600 uppercase at 0.1em, and everything else in Hanken Grotesk.",
+      "Do give every motion a reduced-motion and no-script state where the content is simply present.",
+      "Do use the sign exactly as drawn; tile it for the flight, never redraw or recolour it."
+    ],
+    "donts": [
+      "Don't add drop shadows, rounded corners or a third line weight.",
+      "Don't use a panel colour as a background tint, badge, button fill or decoration at rest.",
+      "Don't use the sign's red for a part cell; it fails contrast at label size with ink or white.",
+      "Don't add grid paper, dimension lines or a title block; the drawing lives in pens and lettering.",
+      "Don't caption the personal photos.",
+      "Don't set headings or reading text in the narrow caps, or introduce a separate display face."
+    ]
+  }
+}
