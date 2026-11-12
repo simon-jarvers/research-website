@@ -1,0 +1,75 @@
+# Publishes the site to GitHub Pages on every push to master.
+# Only the files listed here go live; notes, originals and provenance stay in the repo.
+name: Deploy site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the published files
+        run: |
+          set -euo pipefail
+          mkdir -p _site/assets/img
+          cp index.html imprint.html privacy.html 404.html CNAME robots.txt sitemap.xml _site/
+          cp -r assets/css assets/js assets/fonts _site/assets/
+          cp assets/img/*.webp assets/img/favicon.svg assets/img/favicon-32.png assets/img/apple-touch-icon.png _site/assets/img/
+
+      - name: Check every local link resolves
+        shell: python
+        run: |
+          import pathlib, re, sys
+          site = pathlib.Path("_site")
+          missing = []
+          def check(ref, base, src):
+              ref = ref.split("#")[0].split("?")[0].strip()
+              if not ref or re.match(r"^(https?:|mailto:|data:|//)", ref):
+                  return
+              target = site / ref.lstrip("/") if ref.startswith("/") else base / ref
+              if ref.endswith("/"):
+                  target = target / "index.html"
+              if not target.exists():
+                  missing.append(f"{src}: {ref}")
+          for page in site.glob("*.html"):
+              html = page.read_text()
+              for attr, val in re.findall(r'(href|src|srcset)="([^"]*)"', html):
+                  refs = [part.split()[0] for part in val.split(",") if part.strip()] if attr == "srcset" else [val]
+                  for ref in refs:
+                      check(ref, site, page.name)
+          css = site / "assets/css/style.css"
+          text = re.sub(r"url\((['\"])data:.*?\1\)", "", css.read_text(), flags=re.S)
+          for ref in re.findall(r"url\(['\"]?([^)'\"]+)", text):
+              check(ref, css.parent, "style.css")
+          for m in missing:
+              print(f"::error::missing {m}")
+          sys.exit(1 if missing else 0)
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

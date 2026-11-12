@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-12T14:46:51.423Z",
+        "reason": "Reviewer-confirmed false positive: section.about has 40-64px padding-top below its 2px rule, and each ol.parts summary row has 16px vertical padding below the hairline (verified in desktop.png)"
+      }
+    ]
+  }
+}
